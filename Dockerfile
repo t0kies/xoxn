@@ -71,10 +71,12 @@ COPY --from=builder /app/public ./public
 RUN mkdir .next
 RUN chown nextjs:nodejs .next
 
-# Automatically leverage output traces to reduce image size
+# the standalone server with only the files it uses
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+# the demo photos the admin seed button uploads
+COPY --from=builder --chown=nextjs:nodejs /app/src/endpoints/seed/assets ./src/endpoints/seed/assets
 
 USER nextjs
 

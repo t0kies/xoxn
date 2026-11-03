@@ -1,11 +1,11 @@
 import type { File, Payload } from 'payload'
 import { readFileSync } from 'fs'
-import { dirname, join } from 'path'
-import { fileURLToPath } from 'url'
+import { join } from 'path'
 
 import { creditCaption, SEED_MEDIA, type SeedMedia } from './media'
 
-const assets = join(dirname(fileURLToPath(import.meta.url)), 'assets')
+// from the app root: the Docker image copies them there (the bundled code lives elsewhere)
+const assets = join(process.cwd(), 'src/endpoints/seed/assets')
 
 const mimetypes: Record<string, string> = {
   glb: 'model/gltf-binary',
