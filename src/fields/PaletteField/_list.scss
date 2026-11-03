@@ -1,0 +1,40 @@
+.xn-theme {
+  &__list {
+    background: var(--theme-bg);
+    border: 2px solid var(--box-border-color);
+    box-shadow: 0.75ch 0.5lh 0 0 color-mix(in srgb, var(--theme-text) 18%, transparent);
+    list-style: none;
+    margin: 2px 0 0;
+    max-height: 18lh;
+    overflow-y: auto;
+    padding: 0.25lh 0;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+
+    li {
+      cursor: pointer;
+      padding: 0 1ch;
+
+      span {
+        color: var(--theme-elevation-500);
+      }
+
+      &[aria-selected='true'] {
+        background: var(--theme-text);
+        color: var(--theme-bg);
+
+        span {
+          color: inherit;
+        }
+      }
+    }
+  }
+
+  &__error {
+    color: var(--theme-error-500);
+    margin: 4px 0 0;
+  }
+
+  /* The real site, framed (/theme-preview) */
+}

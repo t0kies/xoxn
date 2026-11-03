@@ -1,0 +1,81 @@
+/* The terminal input and the header prompt */
+@layer components {
+  /* the terminal input (components/TerminalInput) */
+
+  .tui-input {
+    display: inline-grid;
+    min-width: 0;
+    overflow: hidden;
+  }
+  .tui-input > * {
+    grid-area: 1 / 1;
+  }
+  .tui-input-overlay {
+    z-index: 1;
+    white-space: pre;
+    pointer-events: none;
+  }
+  /* :not([size-]) matches the specificity of WebTUI's input[type=...]:not([size-])
+     padding rule, and coming later wins */
+  .tui-input > input:not([size-]) {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--foreground0);
+    font: inherit;
+    caret-color: transparent;
+  }
+  .tui-input > input:focus-visible {
+    outline: none;
+  }
+  .tui-input > input::-webkit-search-cancel-button {
+    appearance: none;
+  }
+  .tui-input > input[aria-invalid='true'] {
+    color: var(--ansi-red);
+  }
+  .tui-input-cursor {
+    background-color: var(--cursor);
+    color: var(--background0);
+  }
+  /* Blinks once idle; a keystroke remounts it, so it is solid while typing */
+  @media (prefers-reduced-motion: no-preference) {
+    [data-effects='true'] .tui-input-cursor {
+      animation: tui-blink 1.1s steps(1) 0.6s infinite;
+    }
+  }
+
+  .tui-prompt-menu {
+    position: absolute;
+    top: calc(100% + 1lh);
+    left: 0;
+    min-width: 34ch;
+    padding: 0.75lh 1ch 0.5lh;
+  }
+  .tui-prompt-option {
+    display: flex;
+    justify-content: space-between;
+    gap: 2ch;
+    padding: 0 1ch;
+    cursor: pointer;
+    color: var(--foreground1);
+  }
+  .tui-prompt-option > :first-child {
+    white-space: nowrap;
+  }
+  .tui-prompt-option > :last-child {
+    color: var(--foreground2);
+  }
+  .tui-prompt-option[aria-selected='true'],
+  .tui-prompt-option:hover {
+    background-color: var(--foreground0);
+    color: var(--background0);
+  }
+  .tui-prompt-option[aria-selected='true'] > :last-child,
+  .tui-prompt-option:hover > :last-child {
+    color: inherit;
+  }
+}

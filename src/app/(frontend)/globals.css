@@ -1,0 +1,85 @@
+/* Tailwind theme/base, then WebTUI, then Tailwind utilities so they win; before the imports */
+@layer theme, base, utils, components, utilities;
+
+@import 'tailwindcss';
+
+/* WebTUI base; its tokens are set below from the Appearance global */
+@import '@webtui/css/base.css';
+@import '@webtui/css/utils/box.css';
+@import '@webtui/css/components/badge.css';
+@import '@webtui/css/components/button.css';
+@import '@webtui/css/components/checkbox.css';
+@import '@webtui/css/components/input.css';
+@import '@webtui/css/components/radio.css';
+@import '@webtui/css/components/spinner.css';
+@import '@webtui/css/components/textarea.css';
+@import './tui.css';
+@import './webtui.css';
+@import './palette.css';
+@import './base.css';
+
+@custom-variant dark (&:is([data-theme='dark'] *));
+/* A mouse and a wide window: the drop-down header, menus and command prompt.
+   Keep in sync with DESK in Header/use-desk-header.ts. */
+@custom-variant desk (@media (hover: hover) and (min-width: 48rem));
+
+@theme {
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+  --breakpoint-2xl: 86rem;
+  /* One typeface everywhere */
+  --font-*: initial;
+  --font-sans: var(--font-departure-mono), ui-monospace, monospace;
+  --font-mono: var(--font-departure-mono), ui-monospace, monospace;
+  /* Terminal cells are square */
+  --radius-*: initial;
+  /* Only the terminal palette exists as Tailwind colors */
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+}
+
+/* Tailwind color utilities (text-dim, bg-surface, border-line, ...) */
+@theme inline {
+  --color-background: var(--background0);
+  --color-surface: var(--background1);
+  --color-raised: var(--background2);
+  --color-foreground: var(--foreground0);
+  --color-body: var(--foreground1);
+  --color-dim: var(--foreground2);
+  --color-line: var(--box-border-color);
+  --color-link: var(--link);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-red: var(--ansi-red);
+  --color-green: var(--ansi-green);
+  --color-blue: var(--ansi-blue);
+  --color-cyan: var(--ansi-cyan);
+  --color-magenta: var(--ansi-magenta);
+  --color-yellow: var(--ansi-yellow);
+}
+
+@layer utilities {
+  .container {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: 2ch;
+  }
+  @variant md {
+    .container {
+      padding-inline: 4ch;
+    }
+  }
+}
+
+/* Hidden until the theme script has set data-theme, so there's no flash */
+html {
+  opacity: 0;
+}
+html[data-theme='dark'],
+html[data-theme='light'] {
+  opacity: initial;
+}

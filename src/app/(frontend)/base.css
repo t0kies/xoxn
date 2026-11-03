@@ -1,0 +1,74 @@
+/* Base elements on the terminal tokens: type, borders, selection, focus */
+@layer base {
+  :root,
+  [data-theme] {
+    --font-family: var(--font-departure-mono), ui-monospace, monospace;
+    --font-size: 16px;
+    --line-height: 1.4;
+    --separator-color: var(--box-border-color);
+    color: var(--foreground0);
+  }
+
+  *,
+  ::before,
+  ::after {
+    border-color: var(--box-border-color);
+    border-radius: 0 !important;
+  }
+
+  html {
+    scrollbar-color: var(--foreground2) var(--background1);
+  }
+
+  html,
+  body {
+    /* WebTUI's base sets break-all, which splits ordinary words mid-word */
+    word-break: normal;
+    overflow-wrap: break-word;
+  }
+
+  /* The page color lives on <html> only (WebTUI's base paints body too): a
+     body background would cover the drop shadows (see .tui-shadow in tui.css) */
+  body {
+    background-color: transparent;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    color: var(--foreground1);
+    padding-bottom: calc(var(--statusline-height) + var(--admin-bar-height));
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--foreground0);
+    font-size: unset;
+    font-weight: unset;
+  }
+
+  ::selection {
+    background-color: var(--selection-bg);
+    color: var(--selection-fg);
+  }
+
+  hr {
+    border: 0;
+    border-top: 2px dashed var(--box-border-color);
+  }
+
+  /* WebTUI draws radios and checkboxes in a pseudo-element one line tall */
+  input[type='radio'],
+  input[type='checkbox'][is-~='checkbox'] {
+    height: 1lh;
+    vertical-align: top;
+  }
+
+  /* WebTUI's base removes every outline; keyboard focus stays visible */
+  :focus-visible {
+    outline: 2px solid var(--link);
+    outline-offset: 2px;
+  }
+}

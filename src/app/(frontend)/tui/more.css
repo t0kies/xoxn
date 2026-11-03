@@ -1,0 +1,21 @@
+/* The full-bleed hero's "↓ -- more -- ↓": the arrows hop down and back, in
+   steps like a redrawn line rather than a smooth glide */
+@layer components {
+  .tui-more-arrow {
+    display: inline-block;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .tui-more-arrow {
+      /* Three hops to point the way, then rest */
+      animation: tui-more-hop 1.2s steps(1, end) 3;
+    }
+  }
+}
+@keyframes tui-more-hop {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(0.25em);
+  }
+}

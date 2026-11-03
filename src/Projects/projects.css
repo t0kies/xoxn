@@ -1,0 +1,56 @@
+/* /projects and /projects/<slug>. Uses the site + WebTUI tokens (see palette.css, tui.css). */
+
+.project-card__placeholder {
+  position: absolute;
+  inset: 0;
+  background-color: var(--background1);
+  --dither-ink: color-mix(in oklab, var(--ansi-cyan) 35%, transparent);
+}
+
+.project-log {
+  padding: 1.5lh 2ch 1lh;
+}
+
+/* git log --graph: a commit dot and a rail per entry */
+.project-log__entry {
+  position: relative;
+  display: grid;
+  gap: 0.25lh;
+  padding-left: 3ch;
+  padding-bottom: 0.5lh;
+}
+
+.project-log__entry::before {
+  content: '*';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--ansi-cyan);
+  font-weight: var(--font-weight-bold);
+}
+
+.project-log__entry:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 0.5ch;
+  top: 1lh;
+  bottom: -0.5lh;
+  border-left: 2px solid var(--box-border-color);
+  translate: -1px 0;
+}
+
+.project-log__entry[data-kind='shipped']::before {
+  color: var(--ansi-yellow);
+}
+
+.project-log__entry[data-kind='blocked']::before {
+  color: var(--ansi-magenta);
+}
+
+.project-log__meta {
+  display: flex;
+  align-items: center;
+  gap: 1ch;
+  font-size: 0.8125rem;
+  color: var(--foreground2);
+}

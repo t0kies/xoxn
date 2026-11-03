@@ -1,0 +1,18 @@
+/* Hero headings: the one place type gets big, like figlet output */
+@layer components {
+  /* after .prose, so it wins over the pager heading sizes */
+  .hero-display h1 {
+    margin-top: 0;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .hero-display h1::before {
+    content: none !important;
+  }
+  /* Beside a media pane (Medium Impact) the column is narrower */
+  .hero-display-split h1 {
+    font-size: clamp(2.25rem, 4vw, 3.25rem);
+  }
+}

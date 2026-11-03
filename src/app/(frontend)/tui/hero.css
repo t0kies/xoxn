@@ -1,0 +1,79 @@
+/* High Impact hero: an old monitor that switches on, then idles; effects on and no reduced motion only */
+@layer components {
+  .hero-high-media {
+    filter: grayscale(2) contrast(1.15) brightness(0.8);
+  }
+  /* Shade the reading side and the foot */
+  .hero-high-shade {
+    background:
+      linear-gradient(
+        to right,
+        var(--background0) 18%,
+        color-mix(in oklab, var(--background0) 55%, transparent) 60%,
+        transparent
+      ),
+      linear-gradient(to top, var(--background0), transparent 35%);
+  }
+  .hero-outline h1 {
+    color: var(--background0);
+    -webkit-text-stroke: 2px var(--foreground0);
+    paint-order: stroke fill;
+  }
+
+  /* The tube is black where the picture hasn't reached yet */
+  .crt-bezel {
+    background-color: black;
+  }
+  .crt-glass {
+    pointer-events: none;
+  }
+
+  @media screen {
+    /* Scanlines, an RGB phosphor mask and a vignette, after lbebber/XJRdrV */
+    [data-effects='true'] .crt-glass {
+      background:
+        radial-gradient(
+          ellipse at center,
+          transparent 60%,
+          color-mix(in oklab, black 40%, transparent)
+        ),
+        linear-gradient(color-mix(in oklab, black 22%, transparent) 50%, transparent 50%),
+        linear-gradient(to right, rgb(255 0 0 / 0.06), rgb(0 255 0 / 0.02), rgb(0 0 255 / 0.06));
+      background-size:
+        100% 100%,
+        100% 3px,
+        3px 100%;
+      box-shadow: inset 0 0 5rem color-mix(in oklab, black 70%, transparent);
+    }
+  }
+
+  @media screen and (prefers-reduced-motion: no-preference) {
+    .hero-high-media {
+      /* Each leg overshoots a touch and settles back, like a stretched band */
+      animation: hero-drift 48s cubic-bezier(0.45, 1.45, 0.55, 1) infinite alternate;
+    }
+
+    [data-effects='true'] .crt-screen {
+      transform-origin: center;
+      animation: crt-turn-on 1.4s linear backwards;
+    }
+    [data-effects='true'] .crt-glass {
+      /* A slow shimmer, not a strobe: well under three changes a second */
+      animation: crt-flicker 7s ease-in-out infinite alternate;
+    }
+  }
+}
+@keyframes hero-drift {
+  0% {
+    transform: scale(1.04) translate(0, 0);
+  }
+  35% {
+    transform: scale(1.06) translate(-0.8%, 0.4%);
+  }
+  70% {
+    transform: scale(1.05) translate(0.6%, -0.5%);
+  }
+  100% {
+    transform: scale(1.07) translate(-0.4%, -0.2%);
+  }
+}

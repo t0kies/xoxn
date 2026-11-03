@@ -1,0 +1,72 @@
+/* The bottom bars and the terminal input / header prompt */
+@layer components {
+  /* ── bottom bars ──────────────────────────────────────────── */
+
+  /* Fixed columns, so a wrapped row lines up under the one above */
+  .tui-keybar {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16ch, 1fr));
+    gap: 0.25lh 1ch;
+    font-size: 0.875rem;
+  }
+  .tui-keybar a {
+    display: flex;
+    color: var(--foreground1);
+    text-decoration: none;
+    text-transform: lowercase;
+  }
+  .tui-keybar a > kbd {
+    padding: 0 0.5ch;
+    background-color: var(--foreground0);
+    color: var(--background0);
+    font-family: inherit;
+  }
+  .tui-keybar a > span {
+    flex: 1;
+    padding: 0 1ch 0 0.5ch;
+    background-color: var(--background2);
+  }
+  .tui-keybar a:hover > span,
+  .tui-keybar a[aria-current='page'] > span {
+    background-color: var(--link);
+    color: var(--background0);
+  }
+
+  .tui-statusline {
+    position: fixed;
+    inset: auto 0 var(--admin-bar-height);
+    z-index: 40;
+    display: flex;
+    height: var(--statusline-height);
+    align-items: center;
+    background-color: var(--background2);
+    color: var(--foreground0);
+    font-size: 0.8125rem;
+    white-space: nowrap;
+  }
+  .tui-statusline > * {
+    padding: 0 1ch;
+  }
+  /* Both bars' mode labels share one width, so their columns line up */
+  .tui-statusline-mode,
+  .tui-adminbar-mode {
+    flex: 0 0 10ch;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--link);
+    color: var(--background0);
+    text-transform: uppercase;
+  }
+  .tui-statusline-mode::after {
+    content: 'normal';
+  }
+  [data-prompt='open'] .tui-statusline-mode {
+    background-color: var(--ansi-yellow);
+    color: var(--ansi-yellow-fg);
+  }
+  [data-prompt='open'] .tui-statusline-mode::after {
+    content: 'command';
+  }
+}

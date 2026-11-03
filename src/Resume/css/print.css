@@ -1,0 +1,57 @@
+/* The sheet on paper: one Letter or A4 page, no screen chrome. Loaded after resume.css. */
+@media print {
+  @page {
+    margin: 0.4in 0.45in;
+  }
+
+  /* rem-based spacing shrinks with this, so the whole sheet scales to fit a page */
+  html:has(.resume-sheet) {
+    font-size: 9.25px;
+  }
+
+  html:has(.resume-sheet),
+  html:has(.resume-sheet) body {
+    background: white !important;
+  }
+
+  .resume-page {
+    padding: 0 !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
+  .resume-toolbar {
+    display: none !important;
+  }
+
+  .resume-sheet {
+    --rs-bg: white;
+    border: 0;
+    box-shadow: none !important;
+    padding: 0 !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .resume-sheet a {
+    text-decoration: none;
+  }
+
+  .resume-sheet[data-title]::before {
+    content: none;
+  }
+
+  /* Tighter vertical rhythm than on screen: a full career has to fit one sheet */
+  .resume-sheet,
+  .resume-sheet .resume-col {
+    gap: 1.1rem !important;
+  }
+
+  .resume-sheet ol.resume-jobs {
+    gap: 0.8rem !important;
+  }
+
+  .resume-sheet .leading-relaxed {
+    line-height: 1.45;
+  }
+}

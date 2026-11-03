@@ -1,0 +1,59 @@
+@import '@payloadcms/ui/scss';
+@import './identity';
+
+/* The stock header avatar only links to the account page; the dropdown replaces it. */
+.app-header__account {
+  display: none;
+}
+
+.account-menu {
+  /* The header chip (see .xn-chip in admin/admin.scss) */
+  &__button {
+    cursor: pointer;
+
+    &:hover {
+      border-color: var(--xn-admin-accent);
+    }
+  }
+
+  &__button-name {
+    max-width: 14ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @include small-break {
+      display: none;
+    }
+  }
+
+  &__avatar {
+    align-items: center;
+    background: var(--xn-admin-accent);
+    color: var(--xn-admin-accent-foreground);
+    display: inline-flex;
+    flex-shrink: 0;
+    font-weight: 700;
+    justify-content: center;
+    letter-spacing: 0.02em;
+    overflow: hidden;
+
+    img {
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+
+  &__portal .popup__scroll-container {
+    max-height: min(80vh, 560px);
+  }
+
+  &__panel {
+    min-width: 260px;
+  }
+
+  &__logout {
+    color: var(--theme-error-500) !important;
+  }
+}

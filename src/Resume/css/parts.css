@@ -1,0 +1,42 @@
+/* Section titles, skill chips and highlight stats on the sheet */
+.resume-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--rs-muted);
+}
+
+.resume-section-title::before {
+  content: '##';
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.resume-section-title::after {
+  content: '';
+  flex: 1;
+  border-top: 2px solid var(--rs-rule);
+}
+
+.resume-chip {
+  display: inline-block;
+  padding: 0 1ch;
+  background: var(--rs-chip);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.resume-chip[data-emphasis='true'] {
+  background: var(--ansi-yellow);
+  color: var(--ansi-yellow-fg);
+  font-weight: 700;
+}
+
+.resume-stat {
+  border-left: 1ch solid var(--accent);
+  padding-left: 1ch;
+}

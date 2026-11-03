@@ -1,0 +1,38 @@
+/*
+ * TUI kit over WebTUI, on the WebTUI tokens (palette.css)
+ *
+ *   .tui-window       framed pane; data-title="..." prints [ title ] on the top edge
+ *   .tui-interactive  pane that lights up on hover / keyboard focus
+ *   .tui-frame        framed media
+ *   .tui-shadow       hard drop shadow (terminal effects only)
+ *   .tui-cmd          "$ command" echo line above a page title
+ *   .tui-rule         heading followed by a rule to the end of the line
+ *   .tui-link         [bracketed] link that inverts on hover / when current
+ *   .tui-tag          [tag]
+ *   .tui-ls           `ls -l` style listing (a table, or a list of two-line entries)
+ *   .tui-header       the header: a fixed bar on touch, a drop-down console on desk
+ *   .tui-menubar      header menu bar with submenus (3 levels)
+ *   .tui-input        text field with a block cursor (components/TerminalInput)
+ *   .tui-keybar       Midnight Commander style numbered key bar
+ *   .tui-statusline   vim style status line
+ *   .tui-adminbar     the owner's tmux-style toolbar under it (components/AdminBar)
+ *   .dither           1-bit checkerboard texture
+ *   .tui-code         numbered code listing that wraps long lines
+ *   .prose            rich text, set like a terminal pager
+ */
+
+@import './tui/panes.css';
+@import './tui/type.css';
+@import './tui/header.css';
+@import './tui/menu.css';
+@import './tui/bars.css';
+@import './tui/input.css';
+@import './tui/effects.css';
+@import './tui/prose.css';
+@import './tui/display.css';
+@import './tui/chrome.css';
+@import './tui/cat.css';
+@import './tui/more.css';
+@import './tui/hero.css';
+@import './tui/hero-crt.css';
+@import './tui/crt.css';

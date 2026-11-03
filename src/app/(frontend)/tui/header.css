@@ -1,0 +1,55 @@
+/* Listings, the header and its menu bar (Header/menu) */
+@layer components {
+  /* ── listings ─────────────────────────────────────────────── */
+
+  .tui-ls {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+  }
+  .tui-ls td,
+  .tui-ls th {
+    padding: 0.15lh 1ch;
+    text-align: left;
+    vertical-align: baseline;
+  }
+  .tui-ls th {
+    color: var(--foreground2);
+    font-weight: normal;
+    border-bottom: 2px solid var(--box-border-color);
+  }
+  .tui-ls tbody tr:hover {
+    background-color: var(--background1);
+  }
+  .tui-ls a {
+    color: var(--foreground0);
+    text-decoration: none;
+  }
+  .tui-ls tr:hover a,
+  .tui-ls > li:hover a {
+    color: var(--link);
+  }
+  .tui-ls > li {
+    padding: 0.15lh 1ch;
+  }
+  .tui-ls > li:hover {
+    background-color: var(--background1);
+  }
+
+  /* ── header ──────────────────────────────────────────────── */
+
+  .tui-header {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 40;
+    border-bottom: 2px solid var(--box-border-color);
+    background-color: var(--background0);
+  }
+  /* desk: shown only when summoned, and it simply appears, like a terminal
+     window (visibility also keeps the hidden links out of the tab order) */
+  @media (hover: hover) and (min-width: 48rem) {
+    .tui-header:not([data-open]):not(:focus-within) {
+      visibility: hidden;
+    }
+  }
+}

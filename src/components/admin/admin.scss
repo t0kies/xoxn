@@ -1,0 +1,79 @@
+/* Shared admin pieces: header chips (environment, account) and the [pill] list cells. */
+
+.xn-chip {
+  align-items: center;
+  background: var(--theme-bg);
+  border: 2px solid var(--box-border-color);
+  color: var(--theme-text);
+  display: inline-flex;
+  font-size: 11px;
+  gap: 1ch;
+  height: 28px;
+  line-height: 1;
+  padding: 0 1ch;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Environment: a status dot, loud (yellow frame) anywhere but production */
+.xn-env {
+  margin-right: 1ch;
+
+  &__dot {
+    background: var(--xn-cyan);
+    height: 1ch;
+    width: 1ch;
+  }
+
+  &--dev {
+    border-color: var(--xn-yellow);
+  }
+
+  &--dev &__dot {
+    background: var(--xn-yellow);
+  }
+
+  &__sha {
+    color: var(--theme-elevation-500);
+    text-transform: none;
+  }
+}
+
+.xn-pill {
+  font-size: 11px;
+  white-space: nowrap;
+
+  &::before {
+    content: '[';
+  }
+  &::after {
+    content: ']';
+  }
+
+  &--c {
+    color: var(--xn-cyan);
+  }
+  &--m {
+    color: var(--xn-magenta);
+  }
+  &--y {
+    color: var(--xn-yellow);
+  }
+  &--g {
+    color: var(--xn-green);
+  }
+  &--r {
+    color: var(--xn-red);
+  }
+  &--b {
+    color: var(--xn-blue);
+  }
+  &--k,
+  &--muted {
+    color: var(--theme-elevation-500);
+  }
+}
+
+.xn-cell-muted {
+  color: var(--theme-elevation-400);
+}

@@ -1,0 +1,50 @@
+notes.md
+
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Next.js
+.next/
+out/
+build/
+dist/
+
+# Payload
+media/
+public/media/
+public/showcase-files/
+
+# next-sitemap generated output
+public/robots.txt
+public/sitemap*.xml
+
+# Vercel
+.vercel
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Editor/OS
+.DS_Store
+.vscode/
+.idea/
+
+# Testing
+coverage/
+playwright-report/
+test-results/
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Internal dev notes
+docs/

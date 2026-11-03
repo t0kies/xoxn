@@ -1,0 +1,64 @@
+/* the sheet stays paper in dark mode too, so it uses the raw tokens, not the themed ones */
+.resume-sheet {
+  --rs-bg: color-mix(in oklab, var(--paper) 45%, white);
+  --rs-fg: var(--ink);
+  --rs-muted: color-mix(in oklab, var(--ink) 64%, var(--paper));
+  --rs-rule: color-mix(in oklab, var(--ink) 14%, var(--paper));
+  --rs-chip: color-mix(in oklab, var(--paper) 80%, var(--ink));
+
+  position: relative;
+  background: var(--rs-bg);
+  color: var(--rs-fg);
+  border: 2px solid var(--ink);
+}
+
+/* The sheet is paper in both themes: headings use its ink, not the theme's */
+.resume-sheet :is(h1, h2, h3, h4) {
+  color: inherit;
+}
+
+/* [ resume.txt ] on the top edge, like a TUI window title */
+.resume-sheet[data-title]::before {
+  content: '[ ' attr(data-title) ' ]';
+  position: absolute;
+  top: 0;
+  left: 2ch;
+  translate: 0 -50%;
+  padding: 0 0.5ch;
+  background: var(--rs-bg);
+  color: var(--rs-muted);
+  font-size: 0.8125rem;
+  line-height: 1;
+}
+
+.resume-sheet a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 3px;
+}
+
+.resume-sheet a:hover {
+  color: var(--accent);
+}
+
+.resume-muted {
+  color: var(--rs-muted);
+}
+
+.resume-rule {
+  border-color: var(--rs-rule);
+}
+
+.resume-target {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+[data-effects='true'] .resume-sheet {
+  box-shadow: 1ch 0.5lh 0 0 color-mix(in oklab, var(--ink) 25%, transparent);
+}
+
+.resume-sheet .avoid-break {
+  break-inside: avoid;
+}

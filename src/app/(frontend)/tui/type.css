@@ -1,0 +1,63 @@
+/* Type: commands, rules, links and tags */
+@layer components {
+  .tui-cmd {
+    color: var(--foreground2);
+    font-size: 0.875rem;
+  }
+  .tui-cmd::before {
+    content: '$ ';
+    color: var(--ansi-green);
+  }
+
+  .tui-rule {
+    display: flex;
+    align-items: center;
+    gap: 1ch;
+  }
+  .tui-rule::after {
+    content: '';
+    flex: 1;
+    min-width: 2ch;
+    border-top: 2px solid var(--box-border-color);
+  }
+
+  .tui-link {
+    color: var(--foreground1);
+    text-decoration: none;
+    text-transform: lowercase;
+    white-space: nowrap;
+  }
+  .tui-link::before {
+    content: '[';
+    color: var(--foreground2);
+  }
+  .tui-link::after {
+    content: ']';
+    color: var(--foreground2);
+  }
+  .tui-link:hover,
+  .tui-link[aria-current='page'] {
+    background-color: var(--foreground0);
+    color: var(--background0);
+  }
+  .tui-link:hover::before,
+  .tui-link:hover::after,
+  .tui-link[aria-current='page']::before,
+  .tui-link[aria-current='page']::after {
+    color: inherit;
+  }
+
+  .tui-tag {
+    color: var(--foreground1);
+    font-size: 0.8125rem;
+    white-space: nowrap;
+  }
+  .tui-tag::before {
+    content: '[';
+    color: var(--foreground2);
+  }
+  .tui-tag::after {
+    content: ']';
+    color: var(--foreground2);
+  }
+}

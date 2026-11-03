@@ -1,0 +1,62 @@
+/* only buttons with a WebTUI attribute get the TUI look; revert-layer for the rest */
+@layer components {
+  button:not([is-~='button']):not([variant-]):not([size-]):not([box-]) {
+    all: revert-layer;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: 0;
+    padding: 0;
+  }
+
+  a[is-~='button'] {
+    text-decoration: none;
+  }
+  /* Hover reads like focus (bold, underlined); outline buttons also fill in.
+     No easing: a terminal redraws, it doesn't fade. */
+  [is-~='button']:hover {
+    font-weight: 700;
+    text-decoration: underline;
+  }
+  [is-~='button'][box-]:hover {
+    background-color: var(--background1);
+  }
+
+  [is-~='button'][variant-='accent'],
+  [is-~='badge'][variant-='accent'] {
+    --button-primary: var(--accent);
+    --button-secondary: var(--accent-fg);
+    --badge-color: var(--accent);
+    --badge-text: var(--accent-fg);
+  }
+  /* A theme sets *-fg for all six hues; the custom theme falls back to inverse text */
+  [is-~='badge'][variant-='red'] {
+    --badge-color: var(--ansi-red);
+    --badge-text: var(--ansi-red-fg, var(--background0));
+  }
+  [is-~='badge'][variant-='green'] {
+    --badge-color: var(--ansi-green);
+    --badge-text: var(--ansi-green-fg, var(--background0));
+  }
+  [is-~='badge'][variant-='blue'] {
+    --badge-color: var(--ansi-blue);
+    --badge-text: var(--ansi-blue-fg, var(--background0));
+  }
+  [is-~='badge'][variant-='cyan'] {
+    --badge-color: var(--ansi-cyan);
+    --badge-text: var(--ansi-cyan-fg);
+  }
+  [is-~='badge'][variant-='magenta'] {
+    --badge-color: var(--ansi-magenta);
+    --badge-text: var(--ansi-magenta-fg);
+  }
+  [is-~='badge'][variant-='yellow'] {
+    --badge-color: var(--ansi-yellow);
+    --badge-text: var(--ansi-yellow-fg);
+  }
+  [is-~='badge'] {
+    font-size: 0.8125rem;
+    text-transform: lowercase;
+  }
+}

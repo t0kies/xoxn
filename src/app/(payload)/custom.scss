@@ -1,0 +1,90 @@
+/* admin look: WebTUI's attribute modules only, the rest through Payload's theme variables */
+@layer base, utils, components;
+@import '@webtui/css/utils/box.css';
+@import '@webtui/css/components/badge.css';
+@import '@webtui/css/components/spinner.css';
+
+:root {
+  /* Set from CMS settings by AdminThemeProvider; these are the fallbacks */
+  --xn-admin-accent: #0a7d5a;
+  --xn-admin-accent-foreground: #ffffff;
+  --xn-font-mono: ui-monospace, monospace;
+  /* The six ANSI hues as text colors (a kitty theme replaces them, see src/themes) */
+  --xn-red: #b3261e;
+  --xn-green: #1b7a3e;
+  --xn-yellow: #8a6d00;
+  --xn-blue: #1f5fbf;
+  --xn-magenta: #9c2f78;
+  --xn-cyan: #0b7c97;
+
+  --style-radius-s: 0px;
+  --style-radius-m: 0px;
+  --style-radius-l: 0px;
+
+  /* WebTUI tokens on Payload's theme scale (flips with the admin theme) */
+  --background0: var(--theme-bg);
+  --background1: var(--theme-elevation-50);
+  --background2: var(--theme-elevation-100);
+  --background3: var(--theme-elevation-200);
+  --foreground0: var(--theme-text);
+  --foreground1: var(--theme-elevation-800);
+  --foreground2: var(--theme-elevation-500);
+  --box-border-color: var(--theme-elevation-400);
+  --font-family: var(--xn-font-mono);
+  --font-size: 13px;
+  --line-height: 1.4;
+  --font-weight-bold: 700;
+  --font-weight-normal: 400;
+}
+
+html[data-theme='dark'] {
+  --xn-red: #f07a6e;
+  --xn-green: #6fd08c;
+  --xn-yellow: #e8c33a;
+  --xn-blue: #7aa7f0;
+  --xn-magenta: #e07ac0;
+  --xn-cyan: #4fc9e8;
+}
+
+*,
+::before,
+::after {
+  border-radius: 0 !important;
+}
+
+/* The pixel face ships one weight: no faux bold or italics */
+body {
+  font-family: var(--font-body);
+  font-synthesis: none;
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--xn-admin-accent) 30%, transparent);
+}
+
+/* ── buttons ──────────────────────────────────────────────── */
+
+.btn {
+  box-shadow: none;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+}
+
+.btn--style-primary {
+  background-color: var(--xn-admin-accent);
+  border-color: var(--xn-admin-accent);
+  color: var(--xn-admin-accent-foreground);
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--theme-text);
+    border-color: var(--theme-text);
+    color: var(--theme-bg);
+  }
+}
+
+.btn--style-secondary {
+  border-width: 2px;
+}
+
+@import './chrome';

@@ -1,0 +1,57 @@
+/* terminal theme from the Appearance inputs on <html>; dark is ink on screen, light is paper */
+:root {
+  --admin-bar-height: 0px;
+  /* Published by the header itself (Header/use-desk-header.ts) */
+  --header-height: 3.5rem;
+  /* The pinned status line at the bottom (Footer/status-line.tsx) */
+  --statusline-height: 1.6rem;
+
+  --ink: #14171a;
+  --paper: #f4f1e8;
+  --accent: #0a7d5a;
+  --accent-fg: #ffffff;
+  --ansi-cyan: #0e8fae;
+  --ansi-cyan-fg: #ffffff;
+  --ansi-magenta: #b8327a;
+  --ansi-magenta-fg: #ffffff;
+  --ansi-yellow: #c99400;
+  --ansi-yellow-fg: #111111;
+}
+
+:root,
+[data-theme='light'] {
+  --background0: var(--paper);
+  --background1: color-mix(in oklab, var(--paper) 93%, var(--ink));
+  --background2: color-mix(in oklab, var(--paper) 85%, var(--ink));
+  --background3: color-mix(in oklab, var(--paper) 70%, var(--ink));
+  --foreground0: var(--ink);
+  --foreground1: color-mix(in oklab, var(--ink) 86%, var(--paper));
+  --foreground2: color-mix(in oklab, var(--ink) 58%, var(--paper));
+  --box-border-color: color-mix(in oklab, var(--ink) 42%, var(--paper));
+  --link: var(--accent);
+  --cursor: var(--accent);
+  --selection-bg: var(--link);
+  --selection-fg: var(--background0);
+  --ansi-red: oklch(50% 0.19 27);
+  --ansi-green: oklch(50% 0.13 150);
+  --ansi-blue: oklch(48% 0.15 255);
+}
+
+[data-theme='dark'] {
+  --background0: var(--ink);
+  --background1: color-mix(in oklab, var(--ink) 92%, var(--paper));
+  --background2: color-mix(in oklab, var(--ink) 83%, var(--paper));
+  --background3: color-mix(in oklab, var(--ink) 68%, var(--paper));
+  --foreground0: color-mix(in oklab, var(--paper) 94%, var(--ink));
+  --foreground1: color-mix(in oklab, var(--paper) 80%, var(--ink));
+  --foreground2: color-mix(in oklab, var(--paper) 52%, var(--ink));
+  --box-border-color: color-mix(in oklab, var(--paper) 34%, var(--ink));
+  /* Accents brighten on a dark screen so they read like phosphor */
+  --link: color-mix(in oklab, var(--accent) 68%, white);
+  --cursor: var(--link);
+  --selection-bg: var(--link);
+  --selection-fg: var(--background0);
+  --ansi-red: oklch(72% 0.16 27);
+  --ansi-green: oklch(78% 0.15 150);
+  --ansi-blue: oklch(74% 0.12 255);
+}

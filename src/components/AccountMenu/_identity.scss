@@ -1,0 +1,43 @@
+@import '@payloadcms/ui/scss';
+
+.account-menu {
+  &__identity {
+    align-items: center;
+    border-bottom: 1px solid var(--theme-elevation-100);
+    display: flex;
+    gap: base(0.5);
+    margin-bottom: base(0.25);
+    padding: base(0.25) base(0.25) base(0.5);
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.35;
+      min-width: 0;
+    }
+
+    strong {
+      font-size: 14px;
+    }
+
+    > div > span {
+      color: var(--theme-elevation-600);
+      font-size: 12px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  /* role chip in the accent */
+  &__role {
+    align-self: flex-start;
+    border: 1px solid currentColor;
+    color: var(--xn-admin-accent) !important;
+    font-size: 11px !important;
+    letter-spacing: 0.04em;
+    margin-top: 4px;
+    padding: 0 8px;
+    text-transform: uppercase;
+  }
+}
